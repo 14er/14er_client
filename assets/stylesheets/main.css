@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+body {
+  min-width: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.profile-image {
+  max-width: 10em;
+}
+
+.peak-image {
+  height: 30em;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  width: 90%;
+}

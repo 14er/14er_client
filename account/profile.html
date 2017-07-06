@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/stylesheets/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <title>CO14</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+
+    </nav>
+  </header>
+  <main class="container">
+    <a href="./new-CO14.html">ADD NEW</a>
+    <div class="profile"></div>
+
+  </main>
+
+  <script type="text/x-handlebars-template" id="profile-template">
+    {{profile}}
+    <h3 class="header-font">Hello {{first_name}}</h3>
+    <img class="profile-image" src="{{profile_image}}"/>
+    <a href="mailto:{{email}}"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
+    <a href="{{facebook_url}}"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+    <a href="{{instagram_url}}"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+    <a href="{{twitter_url}}"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+    {{#each peak}}
+      <div>
+        <h3>Peak: {{peak_name}}, Range: {{range_name}}</h3>
+        <h3>{{elevation}}</h3>
+        <h3>Difficulty: {{difficulty}}</h3>
+        <h3>My Rating: {{account_rating}}</h3>
+        <img class="peak-image" src="{{peak_image_url}}"/>
+      </div>
+    {{/each}}
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
+  <script src="../assets/scripts/global.js" charset="utf-8"></script>
+  <script src="../assets/scripts/profile.js" charset="utf-8"></script>
+</body>
+
+</html>
