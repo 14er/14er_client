@@ -32,11 +32,11 @@
     <a href="{{twitter_url}}"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
     {{#each peak}}
       <div>
+        <img class="peak-image" src="{{peak_image_url}}"/>
         <h3>Peak: {{peak_name}}, Range: {{range_name}}</h3>
         <h3>{{elevation}}</h3>
         <h3>Difficulty: {{difficulty}}</h3>
         <h3>My Rating: {{account_rating}}</h3>
-        <img class="peak-image" src="{{peak_image_url}}"/>
       </div>
     {{/each}}
   </script>
