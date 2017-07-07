@@ -5,40 +5,63 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/stylesheets/main.css">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
   <title>CO14</title>
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <nav>
-
+      <div class="navigation">
+        <a href="../index.html"><img src="../assets/images/CO14_logo.png" alt="CO14 Logo" class="header-logo"></a>
+        <a href="#" onclick="logout()">LOGOUT</a>
+      </div>
     </nav>
   </header>
   <main class="container">
-    <a href="./new-CO14.html">ADD NEW</a>
+    <a href="./new-CO14.html" class="btn float-right zero-right-margin">+ NEW CO14</a>
     <div class="profile"></div>
 
   </main>
+  <footer class="footer">
+
+  </footer>
 
   <script type="text/x-handlebars-template" id="profile-template">
     {{profile}}
     <h3 class="header-font">Hello {{first_name}}</h3>
-    <img class="profile-image" src="{{profile_image}}"/>
-    <a href="mailto:{{email}}"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
-    <a href="{{facebook_url}}"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-    <a href="{{instagram_url}}"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-    <a href="{{twitter_url}}"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-    {{#each peak}}
-      <div>
-        <img class="peak-image" src="{{peak_image_url}}"/>
-        <h3>Peak: {{peak_name}}, Range: {{range_name}}</h3>
-        <h3>{{elevation}}</h3>
-        <h3>Difficulty: {{difficulty}}</h3>
-        <h3>My Rating: {{account_rating}}</h3>
-      </div>
-    {{/each}}
+    <div class="profile-flex">
+      <img class="profile-image" src="{{profile_image}}"/>
+    </div>
+    <div class="socials">
+      <a href="mailto:{{email}}" class="zero-left-margin"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
+      <a href="{{facebook_url}}" class="zero-left-margin"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+      <a href="{{instagram_url}}" class="zero-left-margin"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+      <a href="{{twitter_url}}" class="zero-left-margin"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+      <a href="#" class="zero-right-margin float-right"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i> EDIT PROFILE</a>
+    </div>
+    <hr />
+    <div class="row">
+      {{#each peak}}
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="box">
+            <img class="peak-image" src="{{peak_image_url}}"/>
+            <div class="box-content">
+              <h6><strong>Peak: </strong>{{peak_name}}</h6>
+              <h6><strong>Range: </strong>{{range_name}}</h6>
+              <h6><strong>Elevation: </strong>{{elevation}}</h6>
+              <h6><strong>Difficulty: </strong> {{difficulty}}</h6>
+              <h6><strong>Rating: </strong>{{account_rating}}</h6>
+            </div>
+            <div class="box-footer">
+              <a href="#" class="btn btn-flat zero-left-margin"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> EDIT</a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
   <script src="../assets/scripts/global.js" charset="utf-8"></script>
