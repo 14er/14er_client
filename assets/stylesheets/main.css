@@ -11,19 +11,34 @@ body {
 
 main {
   flex: 1;
-  margin-top: 1.5em;
 }
 
 .header {
-  background: #DCD6F7;
+  /*background: #DCD6F7;*/
+  margin-bottom: 1.75em;
+}
+.hrow {
+  margin-top: 0;
 }
 
 .header-logo {
   width: 7em;
-  padding: 1em;
+  padding: 1em 0 1em 0;
 }
 
-.navigation {}
+.navigation {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  flex: 1;
+}
+
+.search input {
+  width: 30%;
+}
 
 .profile-image {
   max-width: 10em;
@@ -99,6 +114,24 @@ a.btn:hover, a.btn:active {
 }
 
 .footer {
+  display: flex;
+  flex-direction: column;
   background: #3F4045;
-  height: 10em;
+  color: #fbf5f3;
+}
+.brand-small{
+  width: 5em;
+  padding: 1em;
+  background: #DCD6F7;
+}
+
+.copyright {
+  flex: 1;
+  background: #343539;
+  color:#FFF;
+}
+
+.copy-title {
+  padding: .75em 0;
+  margin-bottom: 0;
 }

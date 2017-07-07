@@ -13,27 +13,50 @@
 
 <body>
   <header class="header">
-    <nav>
-      <div class="navigation">
-        <a href="../index.html"><img src="../assets/images/CO14_logo.png" alt="CO14 Logo" class="header-logo"></a>
-        <a href="#" onclick="logout()">LOGOUT</a>
-      </div>
-    </nav>
+    <div class="container">
+      <nav class="navigation">
+        <div class="logo">
+          <a href="../index.html" class="zero-left-margin"><img src="../assets/images/CO14_logo.png" alt="CO14 Logo" class="header-logo"></a>
+        </div>
+        <div class="links">
+          <a href="../index.html">HOME</a>
+          <a href="#">PEAKS</a>
+          <a href="#">ABOUT</a>
+          <a href="#">CONTACT</a>
+          <a href="#" onclick="logout()">LOGOUT</a>
+        </div>
+      </nav>
+    </div>
+    <hr class="hrow">
   </header>
+  <!-- Main Body -->
   <main class="container">
     <a href="./new-CO14.html" class="btn float-right zero-right-margin">+ NEW CO14</a>
     <div class="profile"></div>
-
   </main>
-  <footer class="footer">
+  <!-- ./Main -->
 
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <section class="col-xs-12 col-md-4 text-center">
+        </section>
+        <section class="col-xs-12 col-md-4 text-center">
+        </section>
+        <section class="col-xs-12 col-md-4 contact text-center">
+        </section>
+      </div>
+    </div>
+    <div class="copyright text-center">
+      <p class="copy-title">&copy; Copyright 2017 Jacob H. Feldman</p>
+    </div>
   </footer>
 
   <script type="text/x-handlebars-template" id="profile-template">
     {{profile}}
-    <h3 class="header-font">Hello {{first_name}}</h3>
     <div class="profile-flex">
-      <img class="profile-image" src="{{profile_image}}"/>
+      <img class="profile-image" src="{{profile_image}}" />
+      <h3>{{first_name}} {{last_name}}</h3>
     </div>
     <div class="socials">
       <a href="mailto:{{email}}" class="zero-left-margin"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
@@ -45,21 +68,21 @@
     <hr />
     <div class="row">
       {{#each peak}}
-        <div class="col-sm-12 col-md-6 col-lg-4">
-          <div class="box">
-            <img class="peak-image" src="{{peak_image_url}}"/>
-            <div class="box-content">
-              <h6><strong>Peak: </strong>{{peak_name}}</h6>
-              <h6><strong>Range: </strong>{{range_name}}</h6>
-              <h6><strong>Elevation: </strong>{{elevation}}</h6>
-              <h6><strong>Difficulty: </strong> {{difficulty}}</h6>
-              <h6><strong>Rating: </strong>{{account_rating}}</h6>
-            </div>
-            <div class="box-footer">
-              <a href="#" class="btn btn-flat zero-left-margin"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> EDIT</a>
-            </div>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="box">
+          <img class="peak-image" src="{{peak_image_url}}" />
+          <div class="box-content">
+            <h6><strong>Peak: </strong>{{peak_name}}</h6>
+            <h6><strong>Range: </strong>{{range_name}}</h6>
+            <h6><strong>Elevation: </strong>{{elevation}}</h6>
+            <h6><strong>Difficulty: </strong> {{difficulty}}</h6>
+            <h6><strong>Rating: </strong>{{account_rating}}</h6>
+          </div>
+          <div class="box-footer">
+            <a href="#" class="btn btn-flat zero-left-margin"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> EDIT</a>
           </div>
         </div>
+      </div>
       {{/each}}
     </div>
   </script>
