@@ -4,7 +4,7 @@ let BASE_URL;
   if (window.location.hostname == "localhost") {
     BASE_URL = `http://localhost:3000`
   } else {
-    BASE_URL;
+    BASE_URL = `https://co14.herokuapp.com`;
   }
 })();
 

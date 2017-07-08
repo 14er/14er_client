@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function getUserLoginInfo() {
     return {
-      email: document.getElementById('login-email').value,
+      email: document.getElementById('login-email').value.toLowerCase(),
       password: document.getElementById('login-password').value
     }
   }
@@ -14,17 +14,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loginButton.addEventListener('click', event => {
       event.preventDefault();
       const userInfo = getUserLoginInfo();
+      console.log(userInfo);
       if (validPassword(userInfo.password) === true && validEmailAddress(userInfo.email) === true) {
         const request = postRequest(LOGIN_URL, userInfo, "include");
         fetchRequest(request, setJWTLogin)
       } else {
-        alert("Valid email address and password required")
+        alert("Invalid Email and/or Password")
       }
     });
   }
 
   function setJWTLogin(response) {
-    console.log(response);
     localStorage.token = response.token;
     localStorage.account_id = response.id;
     setIdRedirect(response);

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/stylesheets/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <title>CO14</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navigation">
+        <div class="logo">
+          <a href="../index.html" class="zero-left-margin"><img src="../assets/images/CO14_logo.png" alt="CO14 Logo" class="header-logo"></a>
+        </div>
+        <div class="links">
+          <a href="../index.html">HOME</a>
+          <a href="#">PEAKS</a>
+          <a href="#">ABOUT</a>
+          <a href="#">CONTACT</a>
+        </div>
+      </nav>
+    </div>
+    <hr class="hrow">
+  </header>
+  <!-- Main Body -->
+  <main class="container">
+    <div class="row">
+      <section class="">
+        <form>
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" name="first-name" id="signup-first-name" class="form-control">
+            <label for="last-name">Last Name</label>
+            <input type="text" name="first-name" id="signup-last-name" class="form-control">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="signup-email" class="form-control">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="signup-password" class="form-control">
+            <small class="form-text text-muted">Passwords should be 8-16 characters with atleast 1 uppercase, 1 lowercase, and 1 number</small>
+            <label for="image">Profile Image URL</label>
+            <input type="text" name="image" id="signup-image" class="form-control">
+            <label for="image">Facebook URL</label>
+            <input type="text" name="image" id="signup-facebook" class="form-control">
+            <label for="image">Instagram URL</label>
+            <input type="text" name="image" id="signup-instagram" class="form-control">
+            <label for="image">Twitter URL</label>
+            <input type="text" name="image" id="signup-twitter" class="form-control">
+          </div>
+          <div class="form-group">
+            <button type="button" name="button" id="signup-button" class="btn">SIGNUP</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+  <!-- ./Main -->
+
+  <footer class="footer">
+    <div class="container top-margin-footer">
+      <div class="row">
+        <section class="col-xs-12 col-md-4 footer-section">
+          <h6>Subscribe</h6>
+          <form class="list-group">
+            <input class="list-group-item" type="text" name="" placeholder="Name">
+            <input class="list-group-item" type="email" name="" placeholder="email@mail.com">
+            <button class="btn btn-subscribe" type="button" name="button">Subscribe</button>
+          </form>
+        </section>
+        <section class="col-xs-12 col-md-4 footer-section">
+          <h6>Info</h6>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#">PEAKS</a></li>
+            <li class="list-group-item"><a href="#">ABOUT</a></li>
+            <li class="list-group-item"><a href="#">PRIVACY POLICY</a></li>
+          </ul>
+        </section>
+        <section class="col-xs-12 col-md-4 footer-section">
+          <h6>Contact</h6>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="mailto:jacob.h.felman@gmail.com">Email | <i class="fa fa-envelope fa-md align-right" aria-hidden="true"></i></a></li>
+            <li class="list-group-item"><a href="https://www.linkedin.com/in/jacobhfeldman/">Linkedin | <i class="fa fa-linkedin fa-md" aria-hidden="true"></i></a></li>
+            <li class="list-group-item"><a href="https://github.com/jakeFeldman">Github | <i class="fa fa-github fa-md" aria-hidden="true"></i></a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <div class="copyright text-center">
+      <p class="copy-title">&copy; Copyright 2017 Jacob H. Feldman</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
+  <script src="./assets/scripts/global.js" charset="utf-8"></script>
+  <script src="./assets/scripts/signup.js" charset="utf-8"></script>
+</body>
+
+</html>
