@@ -38,7 +38,7 @@ function getRequest(url) {
   return request;
 }
 
-function postRequest(url, body) {
+function postRequest(url, body, credentials) {
   const request = new Request(url, {
     method: "POST",
     mode: "cors",
@@ -46,7 +46,9 @@ function postRequest(url, body) {
       "Accept": "application/json, text/plain, */*",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
+    // valid values: omit, same-origin, include
+    credentials: credentials,
   })
   return request;
 }
@@ -73,14 +75,14 @@ function validPassword(userPassword) {
 
 // Redirects
 function setIdRedirect(result) {
-  localStorage.user_id = result.id;
-  // window.location = `/account/user.html?id=${result.id}`
+  localStorage.account_id = result.id;
+  window.location = `/account/profile.html?id=${result.id}`
 }
 
 
 function redirectIfLoggedIn() {
-  if (localStorage.user_id) {
-    // window.location = `/account/user.html?id=${localStorage.user_id}`
+  if (localStorage.account_id) {
+    window.location = `/account/profile.html?id=${localStorage.account_id}`
   }
 }
 

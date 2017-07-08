@@ -165,8 +165,6 @@ a.btn:hover, a.btn:active {
 
 .diagonal-image {
   width: 100vw;
-          clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
-  -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
 }
 
 .list-group-item {
@@ -191,18 +189,18 @@ input {
 }
 
 @media only screen and (min-width: 768px) {
+  .diagonal-image {
+    width: 100vw;
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+  }
   .top-margin {
     margin-top: 5em;
   }
-
   .bottom-margin {
     margin-bottom: 5em;
   }
   .top-margin-footer {
     margin-top: 2em;
-  }
-  .footer {
-    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
-    -webkit-clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
   }
 }
