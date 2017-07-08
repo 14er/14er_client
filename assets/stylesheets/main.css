@@ -14,11 +14,25 @@ main {
 }
 
 .header {
-  /*background: #DCD6F7;*/
   margin-bottom: 1.75em;
 }
+
+.index-header {
+  background: #FFF;
+}
+
 .hrow {
   margin-top: 0;
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.hero-image {
+  width: 100vw;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 }
 
 .header-logo {
@@ -119,7 +133,8 @@ a.btn:hover, a.btn:active {
   background: #3F4045;
   color: #fbf5f3;
 }
-.brand-small{
+
+.brand-small {
   width: 5em;
   padding: 1em;
   background: #DCD6F7;
@@ -128,10 +143,66 @@ a.btn:hover, a.btn:active {
 .copyright {
   flex: 1;
   background: #343539;
-  color:#FFF;
+  color: #FFF;
 }
 
 .copy-title {
   padding: .75em 0;
   margin-bottom: 0;
+}
+
+.top-margin {
+  margin-top: 3em;
+}
+
+.bottom-margin {
+  margin-bottom: 3em;
+}
+
+.top-margin-footer {
+  margin-top: .8em;
+}
+
+.diagonal-image {
+  width: 100vw;
+          clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+  -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+}
+
+.list-group-item {
+  background: #343539;
+}
+
+label {
+  margin-top: .75em;
+}
+
+input {
+  color: #FFF;
+}
+
+.btn-subscribe {
+  margin-top: .8em;
+}
+
+.footer-section {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+  .top-margin {
+    margin-top: 5em;
+  }
+
+  .bottom-margin {
+    margin-bottom: 5em;
+  }
+  .top-margin-footer {
+    margin-top: 2em;
+  }
+  .footer {
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
 }
