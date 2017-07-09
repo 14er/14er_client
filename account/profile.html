@@ -81,7 +81,7 @@
       <a href="{{facebook_url}}" class="zero-left-margin"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
       <a href="{{instagram_url}}" class="zero-left-margin"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
       <a href="{{twitter_url}}" class="zero-left-margin"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-      <a href="#" class="zero-right-margin float-right"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i> EDIT PROFILE</a>
+      <a href="" id="edit-profile-btn" class="zero-right-margin float-right" data-toggle="edit-profile" data-target="#edit-profile"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i> EDIT PROFILE</a>
     </div>
     <hr />
     <div class="row">
@@ -103,7 +103,66 @@
       </div>
       {{/each}}
     </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="edit-profile" tabindex="-1" role="dialog" aria-labelledby="edit-profile" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="edit-profile-title">Edit Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <form>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="first-name" class="col-4">First Name</label>
+                    <input type="text" name="first-name" id="update-first-name" class="form-control col-8">
+                  </div>
+                  <div class="row">
+                    <label for="last-name" class="col-4">Last Name</label>
+                    <input type="text" name="first-name" id="update-last-name" class="form-control col-8">
+                  </div>
+                  <div class="row">
+                    <label for="password" class="col-4">Password</label>
+                    <input type="password" name="password" id="update-password" class="form-control col-8">
+                    <small class="form-text text-muted col-12">Passwords should be 8-16 characters with 1 uppercase, 1 lowercase, 1 number and 1 special character</small>
+                  </div>
+                  <div class="row">
+                    <label for="image" class="col-4">Profile Image URL</label>
+                    <input type="text" name="image" id="update-image" class="form-control col-8">
+                  </div>
+                  <div class="row">
+                    <label for="image" class="col-4">Facebook URL</label>
+                    <input type="text" name="image" id="update-facebook" class="form-control col-8">
+                  </div>
+                  <div class="row">
+                    <label for="image" class="col-4">Instagram URL</label>
+                    <input type="text" name="image" id="update-instagram" class="form-control col-8">
+                  </div>
+                  <div class="row">
+                    <label for="image" class="col-4">Twitter URL</label>
+                    <input type="text" name="image" id="update-twitter" class="form-control col-8">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./Edit Profile Modal -->
   </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
   <script src="../assets/scripts/global.js" charset="utf-8"></script>
   <script src="../assets/scripts/profile.js" charset="utf-8"></script>

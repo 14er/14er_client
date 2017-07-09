@@ -74,9 +74,9 @@ function validPassword(userPassword) {
 }
 
 // Redirects
-function setIdRedirect(result) {
-  localStorage.account_id = result.id;
-  window.location = `/account/profile.html?id=${result.id}`
+function setIdRedirect(response) {
+  localStorage.account_id = response.id;
+  window.location = `/account/profile.html?id=${response.id}`
 }
 
 

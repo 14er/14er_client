@@ -16,5 +16,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const userDiv = document.createElement('div');
     userDiv.innerHTML = html;
     getProfile.appendChild(userDiv);
+    editProfileClick()
   }
+
+  function editProfileClick() {
+    const editProfile = document.querySelector('#edit-profile-btn');
+    editProfile.addEventListener("click", event => {
+      event.preventDefault();
+      $('#edit-profile').modal();
+    });
+  }
+
+  function updateProfile() {
+    
+  }
+
 });

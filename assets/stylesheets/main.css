@@ -90,7 +90,7 @@ a:hover, a:active {
   border-radius: 1.5em;
 }
 
-a.btn:hover, a.btn:active {
+a.btn:hover, a.btn:active, button:hover {
   color: #FFF;
   background-color: #A6B1E1;
 }
