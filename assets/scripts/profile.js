@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const hrefLocation = window.location.href;
   const userID = parseQueryString(hrefLocation);
   const PROFILE_URL = BASE_URL + `/api/v1/users/${userID}`;
-  const PROFILE_PAGE =`/account/profile.html?id=${userID}`;
+  const PROFILE_PAGE = `/account/profile.html?id=${userID}`;
 
   const profileRequest = getRequest(PROFILE_URL);
 
@@ -51,20 +51,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function updateUserProfile() {
     const updatedProfile = getUpdatedProfileData();
-    const request = putRequest(PROFILE_URL, updatedProfile , "omit");
+    const request = putRequest(PROFILE_URL, updatedProfile, "omit");
     fetchRequest(request, profileRedirect)
+  }
+
+  function profileRedirect() {
+    return window.location = PROFILE_PAGE;
   }
 
   function deleteUserProfile() {
     const deleteProfileById = {
       id: userID
     }
-    console.log(deleteProfileById);
     const request = deleteRequest(PROFILE_URL, deleteProfileById);
     fetchRequest(request, logout);
   }
 
-  function profileRedirect() {
-    return window.location = PROFILE_PAGE;
-  }
 });
