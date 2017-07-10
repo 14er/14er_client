@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const userInfo = getUserLoginInfo();
       console.log(userInfo);
       if (validPassword(userInfo.password) === true && validEmailAddress(userInfo.email) === true) {
-        const request = postRequest(LOGIN_URL, userInfo, "include");
+        const request = postRequest(LOGIN_URL, userInfo, "omit");
         fetchRequest(request, setJWTLogin)
       } else {
         alert("Invalid Email and/or Password")
