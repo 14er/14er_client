@@ -53,6 +53,34 @@ function postRequest(url, body, credentials) {
   return request;
 }
 
+function putRequest(url, body, credentials) {
+  const request = new Request(url, {
+    method: "PUT",
+    mode: "cors",
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body),
+    // valid values: omit, same-origin, include
+    credentials: credentials,
+  })
+  return request;
+}
+
+function deleteRequest(url, body) {
+  const request = new Request(url, {
+    method: "DELETE",
+    mode: "cors",
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body),
+  })
+  return request;
+}
+
 // Email Validation
 function validEmailAddress(useremail) {
   const filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
