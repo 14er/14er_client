@@ -33,7 +33,12 @@ function fetchRequest(request, callback) {
 function getRequest(url) {
   const request = new Request(url, {
     method: "GET",
-    mode: "cors"
+    mode: "cors",
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.token}`
+    }
   });
   return request;
 }
@@ -44,7 +49,8 @@ function postRequest(url, body, credentials) {
     mode: "cors",
     headers: {
       "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.token}`
     },
     body: JSON.stringify(body),
     // valid values: omit, same-origin, include
@@ -59,7 +65,8 @@ function putRequest(url, body, credentials) {
     mode: "cors",
     headers: {
       "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.token}`
     },
     body: JSON.stringify(body),
     // valid values: omit, same-origin, include
@@ -74,7 +81,8 @@ function deleteRequest(url, body) {
     mode: "cors",
     headers: {
       "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.token}`
     },
     body: JSON.stringify(body),
   })
