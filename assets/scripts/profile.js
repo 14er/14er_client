@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const profileRequest = getRequest(PROFILE_URL);
 
   fetchRequest(profileRequest, showProfile);
-  fetchRequest(profileRequest, showCompleted);
-  fetchRequest(profileRequest, showGoals);
 
   function showProfile(profile) {
     const source = document.querySelector('#profile-template').innerHTML;
@@ -19,26 +17,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     userDiv.innerHTML = html;
     getProfile.appendChild(userDiv);
     profileClickHandlers()
-  }
-
-  function showCompleted(profile) {
-    const source = document.querySelector('#completed-template').innerHTML;
-    const template = Handlebars.compile(source);
-    const html = template(profile[0]);
-    const getCompletePeaks = document.querySelector('.completed');
-    const peaksDiv = document.createElement('div');
-    peaksDiv.innerHTML = html;
-    getCompletePeaks.appendChild(peaksDiv);
-  }
-
-  function showGoals(profile) {
-    const source = document.querySelector('#goals-template').innerHTML;
-    const template = Handlebars.compile(source);
-    const html = template(profile[0]);
-    const getPendingPeaks = document.querySelector('.goals');
-    const goalsDiv = document.createElement('div');
-    goalsDiv.innerHTML = html;
-    getPendingPeaks.appendChild(goalsDiv);
   }
 
   function profileClickHandlers() {
@@ -57,6 +35,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
   }
 
+  function updateUserProfile() {
+    const updatedProfile = getUpdatedProfileData();
+    const request = putRequest(PROFILE_URL, updatedProfile, "omit");
+    fetchRequest(request, profileRedirect)
+  }
+
+  function deleteUserProfile() {
+    const deleteProfileById = {
+      id: userID
+    }
+    const request = deleteRequest(PROFILE_URL, deleteProfileById);
+    fetchRequest(request, logout);
+  }
+
+  fetchRequest(profileRequest, showCompleted);
+
+  function showCompleted(profile) {
+    const source = document.querySelector('#completed-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(profile[0]);
+    const getCompletePeaks = document.querySelector('.completed');
+    const peaksDiv = document.createElement('div');
+    peaksDiv.innerHTML = html;
+    getCompletePeaks.appendChild(peaksDiv);
+  }
+
+  fetchRequest(profileRequest, showGoals);
+
+  function showGoals(profile) {
+    const source = document.querySelector('#goals-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(profile[0]);
+    const getPendingPeaks = document.querySelector('.goals');
+    const goalsDiv = document.createElement('div');
+    goalsDiv.innerHTML = html;
+    getPendingPeaks.appendChild(goalsDiv);
+  }
+
   function getUpdatedProfileData() {
     return {
       id: userID,
@@ -70,22 +86,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
 
-  function updateUserProfile() {
-    const updatedProfile = getUpdatedProfileData();
-    const request = putRequest(PROFILE_URL, updatedProfile, "omit");
-    fetchRequest(request, profileRedirect)
-  }
-
   function profileRedirect() {
     return window.location = PROFILE_PAGE;
-  }
-
-  function deleteUserProfile() {
-    const deleteProfileById = {
-      id: userID
-    }
-    const request = deleteRequest(PROFILE_URL, deleteProfileById);
-    fetchRequest(request, logout);
   }
 
 });
