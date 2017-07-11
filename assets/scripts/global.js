@@ -30,15 +30,20 @@ function fetchRequest(request, callback) {
     .catch(throwError)
 }
 
+function createHeaders() {
+  const headers = new Headers({
+    "Accept": "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${localStorage.token}`
+  })
+  return headers;
+}
+
 function getRequest(url) {
   const request = new Request(url, {
     method: "GET",
     mode: "cors",
-    headers: {
-      "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.token}`
-    }
+    headers: createHeaders()
   });
   return request;
 }
@@ -47,11 +52,7 @@ function postRequest(url, body, credentials) {
   const request = new Request(url, {
     method: "POST",
     mode: "cors",
-    headers: {
-      "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.token}`
-    },
+    headers: createHeaders(),
     body: JSON.stringify(body),
     // valid values: omit, same-origin, include
     credentials: credentials,
@@ -63,11 +64,7 @@ function putRequest(url, body, credentials) {
   const request = new Request(url, {
     method: "PUT",
     mode: "cors",
-    headers: {
-      "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.token}`
-    },
+    headers: createHeaders(),
     body: JSON.stringify(body),
     // valid values: omit, same-origin, include
     credentials: credentials,
@@ -79,11 +76,7 @@ function deleteRequest(url, body) {
   const request = new Request(url, {
     method: "DELETE",
     mode: "cors",
-    headers: {
-      "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.token}`
-    },
+    headers: createHeaders(),
     body: JSON.stringify(body),
   })
   return request;
