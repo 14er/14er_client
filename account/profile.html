@@ -31,8 +31,24 @@
   </header>
   <!-- Main Body -->
   <main class="container">
+
     <a href="./new-CO14.html" class="btn float-right zero-right-margin">+ NEW CO14</a>
+
     <div class="profile"></div>
+
+    <section class="row">
+      <section class="col-sm-12 col-md-6">
+        <h3>Goals</h3>
+        <hr />
+        <div class="goals"></div>
+      </section>
+
+      <section class="col-sm-12 col-md-6">
+        <h3>Completed</h3>
+        <hr />
+        <div class="completed"></div>
+      </section>
+    </section>
   </main>
   <!-- ./Main -->
 
@@ -69,7 +85,7 @@
       <p class="copy-title">&copy; Copyright 2017 Jacob H. Feldman</p>
     </div>
   </footer>
-
+  <!-- USER PROFILE TEMPLATE -->
   <script type="text/x-handlebars-template" id="profile-template">
     {{profile}}
     <div class="profile-flex">
@@ -82,26 +98,6 @@
       <a href="{{instagram_url}}" class="zero-left-margin"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
       <a href="{{twitter_url}}" class="zero-left-margin"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
       <a href="" id="edit-profile-btn" class="zero-right-margin float-right" data-toggle="edit-profile" data-target="#edit-profile"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i> EDIT PROFILE</a>
-    </div>
-    <hr />
-    <div class="row">
-      {{#each peak}}
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="box">
-          <img class="peak-image" src="{{peak_image_url}}" />
-          <div class="box-content">
-            <h6><strong>Peak: </strong>{{peak_name}}</h6>
-            <h6><strong>Range: </strong>{{range_name}}</h6>
-            <h6><strong>Elevation: </strong>{{elevation}}</h6>
-            <h6><strong>Difficulty: </strong> {{difficulty}}</h6>
-            <h6><strong>Rating: </strong>{{account_rating}}</h6>
-          </div>
-          <div class="box-footer">
-            <a href="#" class="btn btn-flat zero-left-margin"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> EDIT</a>
-          </div>
-        </div>
-      </div>
-      {{/each}}
     </div>
 
     <!-- Edit Profile Modal -->
@@ -160,10 +156,63 @@
       </div>
     </div>
     <!-- ./Edit Profile Modal -->
+    <hr />
   </script>
+
+  <!-- GOALS 14er TEMPLATE -->
+  <script type="text/x-handlebars-template" id="goals-template">
+    {{profile}}
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Peak</th>
+            <th class="text-center">Range</th>
+            <th class="text-center">Elevation</th>
+            <th class="text-center">Difficulty</th>
+            <th class="text-center">Complete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each peak}} {{#if is_complete}} {{else}}
+          <tr>
+            <th scope="row"><img class="goals-image" src="{{peak_image_url}}" /></th>
+            <td class="text-center"><small>{{peak_name}}</small></td>
+            <td class="text-center"><small>{{range_name}}</small></td>
+            <td class="text-center"><small>{{elevation}}</small></td>
+            <td class="text-center"><small>{{difficulty}}</small></td>
+            <td class="text-center"><small><a href="#" class=""><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a></small></td>
+          </tr>
+          {{/if}} {{/each}}
+        </tbody>
+      </table>
+  </script>
+
+  <!-- COMPLETED 14er TEMPLATE -->
+  <script type="text/x-handlebars-template" id="completed-template">
+    {{profile}}
+
+      {{#each peak}} {{#if is_complete}}
+      <div class="box">
+        <img class="peak-image" src="{{peak_image_url}}" />
+        <div class="box-content">
+          <h6><strong>Peak: </strong>{{peak_name}}</h6>
+          <h6><strong>Range: </strong>{{range_name}}</h6>
+          <h6><strong>Elevation: </strong>{{elevation}}</h6>
+          <h6><strong>Difficulty: </strong> {{difficulty}}</h6>
+          <h6><strong>Rating: </strong>{{account_rating}}</h6>
+        </div>
+        <div class="box-footer">
+          <a href="#" class="btn btn-flat zero-left-margin"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> EDIT</a>
+        </div>
+      </div>
+      {{/if}} {{/each}}
+
+  </script>
+
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
   <script src="../assets/scripts/global.js" charset="utf-8"></script>
   <script src="../assets/scripts/profile.js" charset="utf-8"></script>

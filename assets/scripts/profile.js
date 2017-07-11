@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const profileRequest = getRequest(PROFILE_URL);
 
   fetchRequest(profileRequest, showProfile);
+  fetchRequest(profileRequest, showCompleted);
+  fetchRequest(profileRequest, showGoals);
 
   function showProfile(profile) {
-    console.log(profile);
     const source = document.querySelector('#profile-template').innerHTML;
     const template = Handlebars.compile(source);
     const html = template(profile[0]);
@@ -18,6 +19,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     userDiv.innerHTML = html;
     getProfile.appendChild(userDiv);
     profileClickHandlers()
+  }
+
+  function showCompleted(profile) {
+    const source = document.querySelector('#completed-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(profile[0]);
+    const getCompletePeaks = document.querySelector('.completed');
+    const peaksDiv = document.createElement('div');
+    peaksDiv.innerHTML = html;
+    getCompletePeaks.appendChild(peaksDiv);
+  }
+
+  function showGoals(profile) {
+    const source = document.querySelector('#goals-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(profile[0]);
+    const getPendingPeaks = document.querySelector('.goals');
+    const goalsDiv = document.createElement('div');
+    goalsDiv.innerHTML = html;
+    getPendingPeaks.appendChild(goalsDiv);
   }
 
   function profileClickHandlers() {
