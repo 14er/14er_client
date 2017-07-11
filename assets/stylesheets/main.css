@@ -56,8 +56,9 @@ main {
 
 .profile-image {
   max-width: 10em;
-  border: 2px solid #eee;
+  border: 1px solid #eee;
   margin: 1em 0;
+  border: .1em solid #eee;
 }
 
 .peak-image {
@@ -101,7 +102,7 @@ a.btn:hover, a.btn:active, button:hover {
 }
 
 .box {
-  border: 2px solid #eee;
+  border: .1em solid #eee;
   display: flex;
   flex-direction: column;
   margin: 1em 0;
