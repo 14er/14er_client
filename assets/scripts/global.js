@@ -1,4 +1,7 @@
 let BASE_URL;
+const userID = localStorage.account_id;
+const PROFILE_PAGE = `/account/profile.html?id=${userID}`;
+
 
 (function getBaseURL() {
   if (window.location.hostname == "localhost") {
@@ -118,4 +121,8 @@ function redirectIfLoggedIn() {
 function logout() {
   localStorage.clear()
   window.location = '/index.html'
+}
+
+function profileRedirect() {
+  return window.location = PROFILE_PAGE;
 }

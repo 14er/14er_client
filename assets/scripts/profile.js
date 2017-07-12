@@ -85,9 +85,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
       twitter_url: document.getElementById('update-twitter').value,
     }
   }
-
-  function profileRedirect() {
-    return window.location = PROFILE_PAGE;
-  }
-
+  
 });
