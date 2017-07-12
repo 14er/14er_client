@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   fetchRequest(profileRequest, showGoals);
 
   function showGoals(profile) {
+    console.log(profile);
     const source = document.querySelector('#goals-template').innerHTML;
     const template = Handlebars.compile(source);
     const html = template(profile[0]);
@@ -71,7 +72,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const goalsDiv = document.createElement('div');
     goalsDiv.innerHTML = html;
     getPendingPeaks.appendChild(goalsDiv);
+    addClickHandlersToGoal();
   }
+
+  let accountPeakId;
+
+  function addClickHandlersToGoal() {
+    const editGoal = document.querySelector('#edit-goal-btn');
+    editGoal.addEventListener("click", function(e) {
+      e.preventDefault();
+      accountPeakId = this.getAttribute('data-id');
+      console.log(accountPeakId);
+      $('#edit-goal').modal();
+    })
+  }
+
 
   function getUpdatedProfileData() {
     return {
@@ -85,5 +100,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
       twitter_url: document.getElementById('update-twitter').value,
     }
   }
-  
+
 });

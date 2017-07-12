@@ -199,6 +199,14 @@ input {
   table-layout: fixed;
 }
 
+.bg-red {
+  background: #DA2C38;
+}
+
+.bg-red:hover {
+  background: #E0525C;
+}
+
 @media (min-width: 768px) {
   .diagonal-image {
     width: 100vw;
