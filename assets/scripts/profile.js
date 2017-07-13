@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-  const hrefLocation = window.location.href;
-  const userID = parseQueryString(hrefLocation);
-  const PROFILE_URL = BASE_URL + `/api/v1/users/${userID}`;
-  const PROFILE_PAGE = `/account/profile.html?id=${userID}`;
 
   const profileRequest = getRequest(PROFILE_URL);
 
   fetchRequest(profileRequest, showProfile);
 
-  function showProfile(profile) {
+  function showProfile(response) {
+    showUser(response)
+    showCompletePeaks(response)
+    showPendingPeaks(response)
+  }
+
+  function showUser(profile) {
     const source = document.querySelector('#profile-template').innerHTML;
     const template = Handlebars.compile(source);
     const html = template(profile[0]);
@@ -17,6 +19,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
     userDiv.innerHTML = html;
     getProfile.appendChild(userDiv);
     profileClickHandlers()
+  }
+
+  function showCompletePeaks(profile) {
+    const source = document.querySelector('#completed-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(profile[0]);
+    const getCompletePeaks = document.querySelector('.completed');
+    const peaksDiv = document.createElement('div');
+    peaksDiv.innerHTML = html;
+    getCompletePeaks.appendChild(peaksDiv);
+  }
+
+  function showPendingPeaks(profile) {
+    console.log(profile);
+    const source = document.querySelector('#goals-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(profile[0]);
+    const getPendingPeaks = document.querySelector('.goals');
+    const goalsDiv = document.createElement('div');
+    goalsDiv.innerHTML = html;
+    getPendingPeaks.appendChild(goalsDiv);
+    addClickHandlersToGoal();
   }
 
   function profileClickHandlers() {
@@ -49,45 +73,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     fetchRequest(request, logout);
   }
 
-  fetchRequest(profileRequest, showCompleted);
-
-  function showCompleted(profile) {
-    const source = document.querySelector('#completed-template').innerHTML;
-    const template = Handlebars.compile(source);
-    const html = template(profile[0]);
-    const getCompletePeaks = document.querySelector('.completed');
-    const peaksDiv = document.createElement('div');
-    peaksDiv.innerHTML = html;
-    getCompletePeaks.appendChild(peaksDiv);
-  }
-
-  fetchRequest(profileRequest, showGoals);
-
-  function showGoals(profile) {
-    console.log(profile);
-    const source = document.querySelector('#goals-template').innerHTML;
-    const template = Handlebars.compile(source);
-    const html = template(profile[0]);
-    const getPendingPeaks = document.querySelector('.goals');
-    const goalsDiv = document.createElement('div');
-    goalsDiv.innerHTML = html;
-    getPendingPeaks.appendChild(goalsDiv);
-    addClickHandlersToGoal();
-  }
-
-  let accountPeakId;
-
-  function addClickHandlersToGoal() {
-    const editGoal = document.querySelector('#edit-goal-btn');
-    editGoal.addEventListener("click", function(e) {
-      e.preventDefault();
-      accountPeakId = this.getAttribute('data-id');
-      console.log(accountPeakId);
-      $('#edit-goal').modal();
-    })
-  }
-
-
   function getUpdatedProfileData() {
     return {
       id: userID,
@@ -101,4 +86,75 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
 
+
+  let goalIDsForUpdate = [];
+  function addClickHandlersToGoal() {
+    const editGoal = document.querySelectorAll('.edit-goal-btn');
+    [].forEach.call(editGoal, function(goal) {
+      goal.addEventListener("click", function(e) {
+        e.preventDefault();
+        goalIDsForUpdate = []
+        const accountPeakId = this.getAttribute('data-id');
+        const peakId = this.getAttribute('data-peak_id');
+        goalIDsForUpdate.push(accountPeakId,peakId)
+        $('#edit-goal').modal();
+      });
+    });
+    const completeGoal = document.getElementsByClassName('complete-goal-btn');
+    [].forEach.call(completeGoal, function(complete) {
+      complete.addEventListener("click", e => {
+        e.preventDefault();
+        const goalBody = getGoalFormData(goalIDsForUpdate);
+        if (goalUpdateIsValid(goalBody)) {
+          updateGoal(goalBody)
+        } else {
+          alert("Please fill out the form")
+        }
+      });
+    });
+    const deleteGoal = document.getElementsByClassName('delete-goal');
+    [].forEach.call(deleteGoal, function(deleted) {
+      deleted.addEventListener("click", e => {
+        e.preventDefault();
+        // console.log('Clicked Delete');
+        deleteUserGoal(goalIDsForUpdate);
+      })
+    })
+  }
+
+  function goalUpdateIsValid(update) {
+    const hasRating = (!isNaN(update.account_rating))
+    const hasDate = typeof update.date_complete == "string" && update.date_complete.trim() != '';
+    const hasNotes = typeof update.account_notes == "string" && update.account_notes.trim() != '';
+    return hasRating && hasDate && hasNotes;
+  }
+
+  function updateGoal(goalBody) {
+    const updateGoalBody = goalBody
+    const request = putRequest(USER_PEAK_URL, updateGoalBody, "omit");
+    // console.log(updateGoalBody);
+    fetchRequest(request, profileRedirect)
+  }
+
+  function deleteUserGoal(id_array) {
+    const deleteGoal = {
+      id: id_array[0]
+    }
+    const request = deleteRequest(USER_PEAK_URL, deleteGoal);
+    // console.log(deleteGoal);
+    fetchRequest(request, profileRedirect);
+  }
+
+  function getGoalFormData(id_array) {
+    return {
+      id: id_array[0],
+      account_rating: document.getElementsByName('update-rating')[0].value,
+      account_image_url: document.getElementsByName('update-peak-image')[0].value,
+      account_notes: document.getElementsByName('update-notes')[0].value,
+      is_complete: true,
+      date_complete: document.getElementsByName('update-date')[0].value,
+      account_id: userID,
+      peak_id: id_array[1]
+    }
+  }
 });

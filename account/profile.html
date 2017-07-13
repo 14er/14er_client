@@ -126,7 +126,7 @@
                   </div>
                   <div class="row">
                     <label for="password" class="col-4">Password</label>
-                    <input type="password" name="password" id="update-password" class="form-control col-8">
+                    <input type="password" name="password" id="update-password" class="form-control col-8" required>
                     <small class="form-text text-muted col-12">Passwords should be 8-16 characters with 1 uppercase, 1 lowercase, 1 number and 1 special character</small>
                   </div>
                   <div class="row">
@@ -150,7 +150,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn" id="delete-profile">Delete Account</button>
+            <button type="button" class="btn bg-red" id="delete-profile">Delete Account</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn" id="save-profile">Save changes</button>
           </div>
@@ -179,16 +179,15 @@
           {{#each peak}} {{#if is_complete}} {{else}}
           <tr>
             <th scope="row"><img class="goals-image" src="{{peak_image_url}}" /></th>
-            <td class="text-center"><small>{{peak_name}}</small></td>
-            <td class="text-center"><small>{{range_name}}</small></td>
-            <td class="text-center"><small>{{elevation}}</small></td>
-            <td class="text-center"><small>{{difficulty}}</small></td>
-            <td class="text-center"><small><button class="" id="edit-goal-btn" data-id={{account_peak_id}}><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button></small></td>
+            <td class="text-center align-middle"><small>{{peak_name}}</small></td>
+            <td class="text-center align-middle"><small>{{range_name}}</small></td>
+            <td class="text-center align-middle"><small>{{elevation}}</small></td>
+            <td class="text-center align-middle"><small>{{difficulty}}</small></td>
+            <td class="text-center align-middle"><small><button class="edit-goal-btn btn" data-id={{account_peak_id}} data-peak_id={{peak_id}}><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></button></small></td>
           </tr>
           {{/if}} {{/each}}
         </tbody>
       </table>
-
 
       <!-- Edit User GOAL Modal -->
       <div class="modal fade" id="edit-goal" tabindex="-1" role="dialog" aria-labelledby="edit-goal" aria-hidden="true">
@@ -206,28 +205,28 @@
                   <div class="form-group">
                     <div class="row">
                       <label for="rating" class="col-4">Rating</label>
-                      <input type="text" name="rating" id="update-rating" class="form-control col-8">
+                      <input type="text" name="update-rating" class="form-control col-8">
                     </div>
                     <div class="row">
                       <label for="peak-image" class="col-4">Image URL</label>
-                      <input type="text" name="peak-image" id="update-peak-image" class="form-control col-8">
+                      <input type="text" name="update-peak-image" class="form-control col-8">
                     </div>
                     <div class="row">
                       <label for="date" class="col-4">Date Complete</label>
-                      <input type="date" name="date" id="update-date" class="form-control col-8">
+                      <input type="date" name="update-date" class="form-control col-8">
                     </div>
                     <div class="row">
                       <label for="notes" class="col-4">Notes</label>
-                      <textarea name="notes" rows="8" cols="80" class="form-control col-8"></textarea>
+                      <textarea name="update-notes" rows="8" cols="80" class="form-control col-8" ></textarea>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn bg-red" id="delete-goal">Remove Goal</button>
-              <button type="button" class="btn" data-dismiss="modal">Close</button>
-              <button type="button" class="btn" id="save-goal">Completed</button>
+              <button type="button" class="btn bg-red delete-goal">Remove Goal</button>
+              <!-- <button type="button" class="btn" data-dismiss="modal">Close</button> -->
+              <button type="button" class="btn complete-goal-btn">Completed</button>
             </div>
           </div>
         </div>

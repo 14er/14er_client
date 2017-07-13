@@ -1,15 +1,10 @@
-let BASE_URL;
+const BASE_URL = (window.location.hostname == "localhost") ? `http://localhost:3000` : `https://co14.herokuapp.com`;
 const userID = localStorage.account_id;
+const PROFILE_URL = `${BASE_URL}/api/v1/users/${userID}`;
+const PEAK_URL = `${BASE_URL}/api/v1/peaks`
+const USER_PEAK_URL = `${BASE_URL}/api/v1/users/${userID}/peaks`;
 const PROFILE_PAGE = `/account/profile.html?id=${userID}`;
 
-
-(function getBaseURL() {
-  if (window.location.hostname == "localhost") {
-    BASE_URL = `http://localhost:3000`
-  } else {
-    BASE_URL = `https://co14.herokuapp.com`;
-  }
-})();
 
 function parseQueryString(queryString) {
   queryString = queryString.split('=')

@@ -1,13 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-  const PEAK_URL = BASE_URL + `/api/v1/peaks`
-  const NEW_GOAL_URL = BASE_URL + `/api/v1/users/${userID}/new-goal`;
 
   function displayAllPeaks() {
     const selectPeaks = document.getElementById('select-peak-name');
     const request = getRequest(PEAK_URL);
     const getPeaks = fetchRequest(request, appendPeakTitlesToSelect);
-    selectPeaks.addEventListener("click", getPeaks);
-    selectPeaks.removeEventListener("click", getPeaks);
   }
 
   displayAllPeaks();
@@ -42,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     addNew14.addEventListener("click", event => {
       event.preventDefault();
       const goalBody = get14erGoalData();
-      const request = postRequest(NEW_GOAL_URL, goalBody, "omit")
+      const request = postRequest(USER_PEAK_URL, goalBody, "omit")
       fetchRequest(request, profileRedirect);
     });
   }
