@@ -36,7 +36,7 @@ git clone git@github.com:CO14/CO14_client.git
 ## Built With
 
 * [JavaScript](https://github.com/tc39) - JavaScript.
-* [Handlebars.js](http://handlebarsjs.com/) - SQL query builder for Postgres, MSSQL, MySQL, etc...
+* [Handlebars.js](http://handlebarsjs.com/) - Templating Engine
 
 ## Authors
 
