@@ -1,8 +1,8 @@
-# CO14 Database
+# CO14 Client
 
 CO14 is a full stack app that allows its users to track Colorado 14er’s and their completion progress.
 
-This repository is home to the CO14 server. It includes the API/RESTful routes and queries.
+This repository is home to the CO14 server. It includes the HTML/CSS/JavaScript for CO14.
 
 ## Related Repositories
 
